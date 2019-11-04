@@ -39,4 +39,8 @@ RUN /geoschem/CHEM_INPUTS.sh /ExtData/
 COPY ./HEMCO_fix.sh /geoschem/HEMCO_fix.sh
 RUN /geoschem/HEMCO_fix.sh /ExtData/
 
+# Run shorter simuaiton by default
+RUN sed -i -e 's#End   YYYYMMDD.*#End   YYYYMMDD, hhmmss  : 20160701 120000#' input.geos \
+    && sed -i -e "s/'SpeciesConc',/#'SpeciesConc',/" HISTORY.rc
+
 CMD ["./geos", "--dry-run"]
