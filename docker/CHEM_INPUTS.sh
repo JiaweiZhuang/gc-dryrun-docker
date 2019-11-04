@@ -17,5 +17,4 @@ s3://gcgrid/CHEM_INPUTS $DATA_ROOT/CHEM_INPUTS  \
 --include "MODIS_LAI_201204/*" \
 --include "Olson_Land_Map_201203/*" \
 --include "TOMAS_201402/*" \
---include "UCX_201403/*"
-
+--include "UCX_201904/*"
