@@ -41,6 +41,9 @@ RUN /geoschem/HEMCO_fix.sh /ExtData/
 
 # Run shorter simuaiton by default
 RUN sed -i -e 's#End   YYYYMMDD.*#End   YYYYMMDD, hhmmss  : 20160701 120000#' input.geos \
-    && sed -i -e "s/'SpeciesConc',/#'SpeciesConc',/" HISTORY.rc
+    && sed -i -e "s/'SpeciesConc',/#'SpeciesConc',/" HISTORY.rc \
+# speed-up dryrun by large time step
+    && sed -i -e "s#Tran/conv timestep.*#Tran/conv timestep [sec]: 1800#" input.geos \
+    && sed -i -e "s#Chem/emis timestep.*#Chem/emis timestep [sec]: 3600#" input.geos
 
 CMD ["./geos", "--dry-run"]
